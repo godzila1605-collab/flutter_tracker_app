@@ -10,6 +10,6 @@ class UpdateDeleteUI extends StatefulWidget {
 class _UpdateDeleteUIState extends State<UpdateDeleteUI> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold();
   }
 }
