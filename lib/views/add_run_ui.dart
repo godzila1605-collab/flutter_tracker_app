@@ -118,7 +118,7 @@ class _AddRunUIState extends State<AddRunUI> {
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    'บันทึกแก้ไขข้อมูล',
+                    'บันทึกข้อมูล',
                     style: TextStyle(
                       color: Colors.white,
                       //fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _AddRunUIState extends State<AddRunUI> {
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    'ลบข้อมูล',
+                    'ยกเลิก',
                     style: TextStyle(
                       color: Colors.white,
                       //fontWeight: FontWeight.bold,

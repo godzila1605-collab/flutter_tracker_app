@@ -51,20 +51,20 @@ class _ShowAllRunUIState extends State<ShowAllRunUI> {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/speed.png',
               height: MediaQuery.of(context).size.height * 0.25,
               width: MediaQuery.of(context).size.height * 0.25,
               fit: BoxFit.cover,
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.025,
-            ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * 0.025,
+            // ),
             Text(
               'วิ่งกันเถอะ',
               style: TextStyle(
                 color: const Color.fromARGB(255, 0, 0, 0),
                 fontSize: MediaQuery.of(context).size.height * 0.035,
-                // fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
