@@ -3,8 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tracker_app/views/splash_screen_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  //----- ติดต่อกับ supabase project ที่เราจะทำงานด้วย -----
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://ofmlntyajsiyzqscdzvt.supabase.co',
+    publishableKey: 'sb_publishable_1BEAEcuAHqTM082qVb-LOQ_Mo5oPOB2',
+  );
+
+  //----------------------------------
+
   runApp(
     const FlutterTrackerApp(),
   );

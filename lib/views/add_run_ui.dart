@@ -1,6 +1,8 @@
 // ignore_for_file: sort_child_properties_last, empty_statements
 
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddRunUI extends StatefulWidget {
   const AddRunUI({super.key});
@@ -10,6 +12,38 @@ class AddRunUI extends StatefulWidget {
 }
 
 class _AddRunUIState extends State<AddRunUI> {
+  //----ส่วนของ code ที่เกียวกับ กล้อง , แกลลอรี่ และ
+  Uint8List? imageBytes; //เอาไว้เก็บรูป เพื่อแสดงที่หน้าจอ
+  XFile? imageFile; //เอาไว้เก็บรูป เพื่อ upload to bucket
+
+  //เปิดกล้อง
+  Future<void> selectImageFromCamera() async {
+    imageFile = await ImagePicker()
+        .pickImage(source: ImageSource.camera, imageQuality: 80);
+
+    //ตรวจสอบว่าได้เลือกมั้ย
+    if (imageFile != null) {
+      final byte = await imageFile!.readAsBytes();
+      setState(() {
+        imageBytes = byte;
+      });
+    }
+  }
+
+  //เปิดแกลลอรี่
+  Future<void> selectImageFromGallery() async {
+    imageFile = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 80);
+
+    //ตรวจสอบว่าได้เลือกมั้ย
+    if (imageFile != null) {
+      final byte = await imageFile!.readAsBytes();
+      setState(() {
+        imageBytes = byte;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +78,28 @@ class _AddRunUIState extends State<AddRunUI> {
           child: Center(
             child: Column(
               children: [
-                Icon(
-                  Icons.add_a_photo,
-                  size: MediaQuery.of(context).size.width * 0.35,
-                  color: Colors.grey,
-                ),
+                imageBytes == null
+                    ? InkWell(
+                        onTap: () {
+                          selectImageFromGallery();
+                        },
+                        child: Icon(
+                          Icons.add_a_photo,
+                          size: MediaQuery.of(context).size.width * 0.35,
+                          color: Colors.grey,
+                        ),
+                      )
+                    : InkWell(
+                        onTap: () {
+                          selectImageFromGallery();
+                        },
+                        child: Image.memory(
+                          imageBytes!,
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          height: MediaQuery.of(context).size.width * 0.35,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.035,
                 ),
@@ -97,7 +148,7 @@ class _AddRunUIState extends State<AddRunUI> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'ระยะทาง',
+                    'ระยะทาง (กิโลเมตร)',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
@@ -139,7 +190,9 @@ class _AddRunUIState extends State<AddRunUI> {
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     'ยกเลิก',
                     style: TextStyle(

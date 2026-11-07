@@ -16,7 +16,7 @@ class _UpdateDeleteUIState extends State<UpdateDeleteUI> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 16, 11, 87),
         title: Text(
-          'RUN TRACKER (เพิ่ม)',
+          'RUN TRACKER (แก้ไข/ลบ)',
           style: TextStyle(
             color: Colors.white,
             // fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class _UpdateDeleteUIState extends State<UpdateDeleteUI> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'ระยะทาง',
+                    'ระยะทาง (กิโลเมตร)',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.bold,
