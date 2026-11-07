@@ -19,21 +19,19 @@ class Run {
 
   //แปลงข้อมูล จาก mobile เป็น json เพื่อส่งไป supabase
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "runWhere": runWhere,
-        "runPerson": runPerson,
-        "runDistance": runDistance,
-        "runImageUrl": runImageUrl,
-        "created_at": created_at,
+        "runWhere": runWhere as String,
+        "runPerson": runPerson as String,
+        "runDistance": runDistance as int,
+        "runImageUrl": runImageUrl as String,
       };
 
   //แปลงข้อมูล จาก json  ใน supabase เป็น object ใน mobile
   factory Run.fromJson(Map<String, dynamic> json) => Run(
-        id: json["id"],
-        runWhere: json["runWhere"],
-        runPerson: json["runPerson"],
-        runDistance: json["runDistance"],
-        runImageUrl: json["runImageUrl"],
-        created_at: json["created_at"],
+        id: json["id"] as String,
+        runWhere: json["runWhere"] as String,
+        runPerson: json["runPerson"] as String,
+        runDistance: json["runDistance"] as int,
+        runImageUrl: json["runImageUrl"] as String,
+        created_at: json["created_at"] as String,
       );
 }
