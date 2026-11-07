@@ -87,7 +87,7 @@ class _AddRunUIState extends State<AddRunUI> {
     //แจ้งเตือน
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('บันทึกข้อมูลเรียบร้อย'),
+        content: Text('✅ บันทึกข้อมูลเรียบร้อย'),
         duration: Duration(seconds: 2),
         backgroundColor: Colors.green,
       ),
